@@ -233,6 +233,11 @@ header {
     border-bottom: 3px solid #7146a0;
 }
 
+.navbar-light .navbar-nav .active-link {
+    transition: all .3s ease-in-out !important;
+    border-bottom: 3px solid #7146a0;
+}
+
 .dropdown-menu {
     padding: 0px;
 }

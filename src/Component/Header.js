@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 function Header() {
     const aref = useRef(null);
     const [scroll, setScroll] = useState(false);
@@ -15,6 +15,14 @@ function Header() {
             setScroll(false);
         }
     });
+    const location = useLocation();
+
+    //destructuring pathname from location
+    const { pathname } = location;
+
+    //Javascript split method to get the name of the path in array
+    const splitLocation = pathname.split("/");
+    console.log(splitLocation);
 
     return (
         <div ref={aref}>
@@ -43,14 +51,14 @@ function Header() {
                         </button>
                         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                             <ul className="navbar-nav">
-                                <li className="nav-item"><Link className="nav-link" to="/">Home</Link>  </li>
-                                <li className="nav-item"><Link className="nav-link" to="/about">About</Link>  </li>
-                                <li className="nav-item"> <Link className="nav-link" to="/sale">For Sale</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/managment">Managment</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/lease">For Lease</Link>  </li>
-                                <li className="nav-item"><Link className="nav-link" to="/recents">Recents</Link>  </li>
-                                <li className="nav-item"> <Link className="nav-link" to="/ourTeam">Our Team</Link> </li>
-                                <li className="nav-item"> <Link className="nav-link" to="/contact">Contact Us</Link> </li>
+                                <li className="nav-item"><Link className={splitLocation[1] === "" ? "active-link nav-link" : "nav-link"} to="/">Home</Link>  </li>
+                                <li className="nav-item"><Link className={splitLocation[1] === "about" ? "active-link nav-link" : "nav-link"} to="/about">About</Link>  </li>
+                                <li className="nav-item"> <Link className={splitLocation[1] === "sale" ? "active-link nav-link" : "nav-link"} to="/sale">For Sale</Link></li>
+                                <li className="nav-item"><Link className={splitLocation[1] === "managment" ? "active-link nav-link" : "nav-link"} to="/managment">Managment</Link></li>
+                                <li className="nav-item"><Link className={splitLocation[1] === "lease" ? "active-link nav-link" : "nav-link"} to="/lease">For Lease</Link>  </li>
+                                <li className="nav-item"><Link className={splitLocation[1] === "recents" ? "active-link nav-link" : "nav-link"} to="/recents">Recents</Link>  </li>
+                                <li className="nav-item"> <Link className={splitLocation[1] === "ourTeam" ? "active-link nav-link" : "nav-link"} to="/ourTeam">Our Team</Link> </li>
+                                <li className="nav-item"> <Link className={splitLocation[1] === "contact" ? "active-link nav-link" : "nav-link"} to="/contact">Contact Us</Link> </li>
                             </ul>
                         </div>
                     </nav>
