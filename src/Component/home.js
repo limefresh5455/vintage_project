@@ -19,22 +19,17 @@ function Home() {
                                 <div className="banner-left">
                                     <h1>Prominent Wholesaler off-market properties in metro</h1>
                                     <div className="below-btn-1">
-                                        <Link className="arrow-button-3">CONTACT US<span className="arrow-3"></span></Link>
+                                        <Link className="arrow-button-3" to="/contact">CONTACT US<span className="arrow-3"></span></Link>
                                     </div>
                                 </div>
                             </div>
-
-
                             <div className="scroll" id="button1">
                                 <button onClick={handleAbout} className="btn-scroll" >Scroll</button>
-
                                 <div className="scroll-vert"></div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
 
             <div ref={ref}><section className="pd-1 pd-2 second">
@@ -45,7 +40,7 @@ function Home() {
                                 <h3><span></span>About <span className="span2" >Vantage</span></h3>
                                 <p> Vantage Commercial Realty is a boutique brokerage house located in Washington, D.C. was founded in 2005, investors and developers since then. </p>
                                 <div className="below-btn-1">
-                                    <Link className="arrow-button-3">Find Out More<span className="arrow-3"></span></Link>
+                                    <Link className="arrow-button-3" to="/about">Find Out More<span className="arrow-3"></span></Link>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +81,7 @@ function Home() {
                                 <div className="ctg-cnt-1">
                                     <h3>FOR Lease</h3>
                                     <p>Our extensive experience and expertise in real estate allows us to offer a full spectrum of services</p>
-                                    <Link href="#" className="btn-7">Find Out<i className="fa fa-angle-double-right" aria-hidden="true"></i></Link>
+                                    <Link to="/lease" className="btn-7">Find Out<i className="fa fa-angle-double-right" aria-hidden="true"></i></Link>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +92,7 @@ function Home() {
                                 <div className="ctg-cnt-1 mrb">
                                     <h3 className="ht-new1">Recents</h3>
                                     <div className="below-btn-1">
-                                        <Link className="arrow-button-3">Find Out More<span className="arrow-3"></span></Link>
+                                        <Link className="arrow-button-3" to="/recents">Find Out More<span className="arrow-3"></span></Link>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +204,7 @@ function Home() {
                     <div className="row justify-content-center align-items-center">
                         <div className="col-md-8">
                             <div className="bnt-in">
-                                <Link className="arrow-button-4">Find Out More<span className="arrow-4"></span></Link>
+                                <Link className="arrow-button-4" to="/sale">Find Out More<span className="arrow-4"></span></Link>
                             </div>
                         </div>
                     </div>

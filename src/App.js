@@ -1,19 +1,18 @@
-import './App.css';
-import Home from './Component/home';
-import About from './Component/about';
-import Lease from './Component/forLease';
-import Sale from './Component/forSale';
-import Managment from './Component/managment';
-import Recents from './Component/recents';
-import OurTeam from './Component/ourTeam';
-import Contact from './Component/contact';
-import Footer from "./Component/footer";
-import Header from "./Component/header"
-import { BrowserRouter , Routes , Route ,useParams } from 'react-router-dom'
+import Home from './Component/Home';
+import About from './Component/About';
+import Lease from './Component/ForLease';
+import Sale from './Component/ForSale';
+import Managment from './Component/Managment';
+import Recents from './Component/Recents';
+import OurTeam from './Component/OurTeam';
+import Contact from './Component/Contact';
+import Footer from "./Component/Footer";
+import Header from "./Component/Header"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
   return (
     <BrowserRouter>
-    <Header/>
+      <Header/>
       <Routes  forceRefresh={true}>
         <Route path="/" element={<Home/>}/>
         <Route path='/about' element={<About/>}/>

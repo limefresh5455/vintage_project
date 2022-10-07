@@ -16,7 +16,6 @@ function Header() {
         }
     });
 
-
     return (
         <div ref={aref}>
             <section className="hds-2">
