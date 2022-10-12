@@ -6,14 +6,15 @@ import Managment from './Component/Managment';
 import Recents from './Component/Recents';
 import OurTeam from './Component/OurTeam';
 import Contact from './Component/Contact';
-import Footer from "./Component/Footer";
+ import Footer from "./Component/Footer";
 import Header from "./Component/Header"
+//import Post from "./post";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
   return (
     <BrowserRouter>
       <Header/>
-      <Routes  forceRefresh={true}>
+            <Routes  forceRefresh={true}>
         <Route path="/" element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/lease' element={<Lease/>}/>
@@ -25,7 +26,7 @@ function App() {
         {/* <Route path='/dashboard' element={<Dashboard/>}/> */}
       </Routes>
       <Footer/>
-    </BrowserRouter>
+         </BrowserRouter>
   );
 }
 

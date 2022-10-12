@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import  sanityClient from "../client"
 function Sale() {
+  const [postData, setPost] = useState(null);
+    console.log(postData)
+    useEffect(() => {
+        sanityClient
+            .fetch(`*[_type == "movie"]{
+                _id,
+                title,
+                releaseDate,
+                poster{
+                  assest->{url
+
+                  },
+                  alt
+                },
+                castMembers[]{
+                  characterName,
+                  person->
+                }
+              }[0...3]`).then((data) => setPost(data)).catch(console.error)
+    }, []);
+
+
   return (
     <div>
       {/* <!-- about-content-start --> */}
@@ -30,13 +53,17 @@ function Sale() {
             </div>
           </div>
           <div className="row">
+         
+          {postData &&
+          postData.map((post, index) => (
+          
             <div className="simple-effet-image clearfix d-st">
               <div className="col-md-4">
                 <div className="effect-image-1">
-                  <img src="https://vantagecr.com/wp-content/uploads/2021/11/1716_RI_Front.jpg" alt="" className="img-fluid img-hit-st" />
+                  <img src= {post.poster.assest} alt="" className="img-fluid img-hit-st" />
                   <div className="simple-text">
                     <h3><i className="fa fa-map-marker" aria-hidden="true"></i>1716 Rhode Island Ave NE</h3>
-                    <p>1716 Rhode Island Ave., NE, Washington, DC 20018</p>
+                    <p> {post.title}</p>
                   </div>
                   <div className="overlay-sim-text-2 overlay-xs-1">
                     <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
@@ -48,7 +75,7 @@ function Sale() {
                   <img src="https://vantagecr.com/wp-content/uploads/2021/03/1923Lincoln.jpg" alt="" className="img-fluid img-hit-st" />
                   <div className="simple-text">
                     <h3><i className="fa fa-map-marker" aria-hidden="true"></i>1923 Lincoln Rd NE</h3>
-                    <p>1923 Lincoln Rd. NE, Washington, DC 20002</p>
+                    <p>{post.title}</p>
                   </div>
                   <div className="overlay-sim-text-2 overlay-xs-1">
                     <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
@@ -60,7 +87,7 @@ function Sale() {
                   <img src="https://vantagecr.com/wp-content/uploads/2021/03/1428_9th_Front.jpg" alt="" className="img-fluid img-hit-st" />
                   <div className="simple-text">
                     <h3><i className="fa fa-map-marker" aria-hidden="true"></i>1428 9th St. NW</h3>
-                    <p>1428 9th St., NW, Washington DC 20001</p>
+                    <p>{post.title}</p>
                   </div>
                   <div className="overlay-sim-text-2 overlay-xs-1">
                     <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
@@ -68,6 +95,7 @@ function Sale() {
                 </div>
               </div>
             </div>
+            ))}
           </div>
           <div className="row mr-st">
             <div className="simple-effet-image clearfix d-st">
