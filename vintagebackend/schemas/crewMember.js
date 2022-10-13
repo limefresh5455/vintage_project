@@ -13,12 +13,12 @@ export default {
       title: 'Job',
       type: 'string',
     },
-    {
-      name: 'person',
-      title: 'Person',
-      type: 'reference',
-      to: [{type: 'person'}],
-    },
+    // {
+    //   name: 'person',
+    //   title: 'Person',
+    //   type: 'reference',
+    //   to: [{type: 'person'}],
+    // },
     {
       name: 'externalId',
       title: 'External ID',

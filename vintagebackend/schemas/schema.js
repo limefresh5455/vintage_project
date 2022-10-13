@@ -5,14 +5,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // We import object and document schemas
 // import blockContent from './blockContent'
-// import crewMember from './crewMember'
-// import castMember from './castMember'
-// import movie from './movie'
-// import person from './person'
-// import screening from './screening'
-// import plotSummary from './plotSummary'
-// import plotSummaries from './plotSummaries'
-import leaseProperty from './leaseProperty'
+import crewMember from './crewMember'
+import castMember from './castMember'
+import property from './property'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -21,17 +16,8 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    // The following are document types which will appear
-    // in the studio.
-    // movie,
-    leaseProperty,
-    // screening,
-    // // When added to this list, object types can be used as
-    // // { type: 'typename' } in other document schemas
-    // blockContent,
-    // plotSummary,
-    // plotSummaries,
-    // castMember,
-    // crewMember,
+    property,
+    castMember,
+    crewMember,
   ]),
 })

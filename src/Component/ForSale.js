@@ -6,17 +6,20 @@ function Sale() {
   console.log(postData)
   useEffect(() => {
     sanityClient
-      .fetch(`*[_type == "movie"]{
-                _id,
+      .fetch(`*[_type=="property"]{
+                 _id,
                 title,
                 releaseDate,
                 poster{
-                  assest->{url
-
+                  asset->{
+                    _id,
+                    url
                   },
                   alt
                 },
-              }[]`).then((data) => setPost(data)).catch(console.error)
+                propertyName,
+                propertyType
+      }`).then((data) => setPost(data)).catch(console.error)
   }, []);
 
   return (
@@ -45,31 +48,24 @@ function Sale() {
               </div>
             </div>
           </div>
-          {postData && postData.map((post, index) => (
           <div className="row">
-            <div className="simple-effet-image clearfix d-st">
-              <div className="col-md-4">
-            
+            {postData && postData.map((post, index) => (
+              // <div className="simple-effet-image clearfix d-st">
+                <div className="col-md-4">
                   <div className="effect-image-1">
-                  
-                    <img src="https://vantagecr.com/wp-content/uploads/2021/03/1428_9th_Front.jpg" alt="" className="img-fluid img-hit-st" />
+                    <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid img-hit-st" />
                     <div className="simple-text">
-                      <h3><i className="fa fa-map-marker" aria-hidden="true"></i>1716 Rhode Island Ave NE</h3>
+                      <h3><i className="fa fa-map-marker" aria-hidden="true"></i>{post.propertyName}</h3>
                       <p> {post.title}</p>
                     </div>
                     <div className="overlay-sim-text-2 overlay-xs-1">
                       <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
                     </div>
-                    
                   </div>
-                  
-               
-              </div>
-            </div>
-            
+                </div>
+              // </div>
+            ))}
           </div>
-             ))}
-           
         </div>
       </section>
       {/* <!-- contact-area-start --> */}

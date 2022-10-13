@@ -6,12 +6,20 @@ function Lease() {
   console.log(postLeaseData)
   useEffect(() => {
     sanityClient
-      .fetch(`*[_type == "leaseProperty"]{
-                _id,
-                propertyAddress,
-                name,
-                image
-              }[]`).then((data) => setLeasePost(data)).catch(console.error)
+      .fetch(`*[_type=="property"]{
+                 _id,
+                title,
+                releaseDate,
+                poster{
+                  asset->{
+                    _id,
+                    url
+                  },
+                  alt
+                },
+                propertyName,
+                propertyType
+      }`).then((data) => setLeasePost(data) , {prpertyType:"lease"}).then((data) => console.log(postLeaseData)).catch(console.error)
   }, []);
 
   return (
@@ -37,31 +45,27 @@ function Lease() {
             </div>
           </div>
           <div className="row">
-            <div className="simple-effet-image clearfix d-st">
-              {postLeaseData && postLeaseData.map((post, index) => (
-                <><div className="col-md-4">
-                  <div className="effect-image-1">
-                    <img src="https://vantagecr.com/wp-content/uploads/2022/04/4316StBarnabas.jpg" alt="" className="img-fluid img-hit-st-1" />
-                    <div className="simple-text">
-                      <h3><i className="fa fa-map-marker" aria-hidden="true"></i>{post.name}</h3>
-                      <p>4316 St Barnabas Rd, Marlow Heights, MD 20748</p>
-                    </div>
-                    <div className="overlay-sim-text-2 overlay-xs-1">
-                      <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
-                    </div>
+            {/* <div className="simple-effet-image clearfix d-st"> */}
+            {postLeaseData && postLeaseData.map((post, index) => (
+              <><div className="col-md-4">
+                <div className="effect-image-1">
+                  <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid img-hit-st" />
+                  <div className="simple-text">
+                    <h3><i className="fa fa-map-marker" aria-hidden="true" ></i>{post.title}</h3>
+                    <p>4316 St Barnabas Rd, Marlow Heights, MD 20748</p>
+                  </div>
+                  <div className="overlay-sim-text-2 overlay-xs-1">
+                    <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
                   </div>
                 </div>
-                </>
-              ))}
-            </div>
+              </div>
+              </>
+            ))}
+            {/* </div> */}
           </div>
-
-
         </div>
       </section>
-
       {/* <!-- contact-area-start --> */}
-
       <section className="pd-1 pd-2 bg-btm">
         <div className="container">
           <div className="row">
@@ -79,6 +83,5 @@ function Lease() {
       </section>
     </div>
   )
-
 }
 export default Lease;

@@ -1,8 +1,8 @@
 import {MdLocalMovies as icon} from 'react-icons/md'
 
 export default {
-  name: 'movie',
-  title: 'Movie',
+  name: 'property',
+  title: 'Property',
   type: 'document',
   icon,
   fields: [
@@ -21,24 +21,36 @@ export default {
       },
     },
     {
-      name: 'overview',
-      title: 'Overview',
-      type: 'blockContent',
+      name: 'propertyName',
+      title: 'Property Name',
+      type: 'string',
     },
+    // {
+    //   name: 'overview',
+    //   title: 'Overview',
+    //   type: 'blockContent',
+    // },
     {
       name: 'releaseDate',
       title: 'Release date',
       type: 'datetime',
     },
+    // {
+    //   name: 'leaseProperty',
+    //   title: 'Lease Property',
+    //   type: 'datetime',
+    // },
+    
     {
-      name: 'externalId',
-      title: 'External ID',
-      type: 'number',
-    },
-    {
-      name: 'popularity',
-      title: 'Popularity',
-      type: 'number',
+      name: 'propertyType',
+      title: 'Property Type',
+      type: 'string',
+      options:{
+        list:[
+       {value:"sale",title:"For Sale"},
+       {value:"lease",title:"For Lease"},
+        ]
+      }
     },
     {
       name: 'poster',
@@ -48,18 +60,18 @@ export default {
         hotspot: true,
       },
     },
-    {
-      name: 'castMembers',
-      title: 'Cast Members',
-      type: 'array',
-      of: [{type: 'castMember'}],
-    },
-    {
-      name: 'crewMembers',
-      title: 'Crew Members',
-      type: 'array',
-      of: [{type: 'crewMember'}],
-    },
+    // {
+    //   name: 'castMembers',
+    //   title: 'Cast Members',
+    //   type: 'array',
+    //   of: [{type: 'castMember'}],
+    // },
+    // {
+    //   name: 'crewMembers',
+    //   title: 'Crew Members',
+    //   type: 'array',
+    //   of: [{type: 'crewMember'}],
+    // },
   ],
   preview: {
     select: {

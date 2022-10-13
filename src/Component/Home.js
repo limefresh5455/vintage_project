@@ -1,6 +1,27 @@
-import React, { useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import sanityClient from "../client"
 function Home() {
+    const [postData, setPost] = useState(null);
+    console.log(postData)
+    useEffect(() => {
+        sanityClient
+            .fetch(`*[_type=="property"]{
+                     _id,
+                    title,
+                    releaseDate,
+                    poster{
+                      asset->{
+                        _id,
+                        url
+                      },
+                      alt
+                    },
+                    propertyName,
+                    propertyType 
+          }`).then((data) => setPost(data)).catch(console.error)
+    }, []);
+
     const ref = useRef(null);
     const handleAbout = () => {
         ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -116,91 +137,23 @@ function Home() {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-4">
-                            <div className="fest-1"><div className="img-wrapper-in">
-                                <img src="https://vantagecr.com/wp-content/uploads/2021/04/607_Penn.jpg" className="img-fluid inner-img-1" alt="" /></div>
-                                <div className="fest-2">
-                                    <h4>For Lease</h4>
-                                </div>
-                                <div className="fest-3">
-                                    <h3>607 Pennsylvania Upper Floor</h3>
-                                    <p><i className="fa fa-map-marker" aria-hidden="true"></i>607 Pennsylvania Ave Upper Floor, SE, Washington, DC 20003</p>
-                                    <Link href="#">Learn More</Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="fest-1"><div className="img-wrapper-in">
-                                <img src="https://vantagecr.com/wp-content/uploads/2021/03/1428_9th_Front.jpg" className="img-fluid inner-img-1" alt=""/></div>
-                                <div className="fest-2 new-bg">
-                                    <h4>For Sale</h4>
-                                </div>
-                                <div className="fest-3">
-                                    <h3>1428 9th St.  NW</h3>
-                                    <p><i className="fa fa-map-marker" aria-hidden="true"></i>1428 9th St., NW, Washington ,<br />DC 20001</p>
-                                    <Link href="#">Learn More</Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="fest-1"><div className="img-wrapper-in">
-                                <img src="https://vantagecr.com/wp-content/uploads/2018/03/4905_Front.jpg" className="img-fluid inner-img-1"  alt="" /></div>
-                                <div className="fest-2">
-                                    <h4>For Lease</h4>
-                                </div>
-                                <div className="fest-3">
-                                    <h3>BLADENSBURG SHOPPING CENTER</h3>
-                                    <p><i className="fa fa-map-marker" aria-hidden="true"></i>4905 Annapolis Rd., Bladensburg, MD 20710</p>
-                                    <Link href="#">Learn More</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row pd-in5">
-                        <div className="col-md-4">
-                            <div className="fest-1">
-                                <div className="img-wrapper-in">
-                                    <img src="https://vantagecr.com/wp-content/uploads/2018/08/2501_N_Charles.jpg" className="img-fluid inner-img-1" alt=""/></div>
-                                <div className="fest-2">
-                                    <h4>For Lease</h4>
-                                </div>
-                                <div className="fest-3">
-                                    <h3>2501 N Charles St</h3>
-                                    <p><i className="fa fa-map-marker" aria-hidden="true"></i>2501 N Charles St Baltimore, <br />MD 21218</p>
-                                    <Link href="#">Learn More</Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="fest-1">
-                                <div className="img-wrapper-in">
-                                    <img src="https://vantagecr.com/wp-content/uploads/2017/12/Front_2201-2205_4th.fw_.png" className="img-fluid inner-img-1" alt="" /></div>
-                                <div className="fest-2 new-bg">
-                                    <h4>For Sale</h4>
-                                </div>
-                                <div className="fest-3">
-                                    <h3>2201-2205 4th St.NE</h3>
-                                    <p><i className="fa fa-map-marker" aria-hidden="true"></i>2201-2205 4th St. NE, Washington, DC 20002</p>
-                                    <Link href="#">Learn More</Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="fest-1">
-                                <div className="img-wrapper-in">
-                                    <img src="https://vantagecr.com/wp-content/uploads/2021/03/1923Lincoln.jpg" className="img-fluid inner-img-1" alt="" /></div>
-                                <div className="fest-2">
-                                    <h4>For Lease</h4>
-                                </div>
-                                <div className="fest-3">
-                                    <h3>1923 Lincoln Rd NE</h3>
-                                    <p><i className="fa fa-map-marker" aria-hidden="true"></i>1923 Lincoln Rd. NE, Washington, DC 20002</p>
-                                    <Link href="#">Learn More</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {postData && postData.map((post, index) => (
 
+                        <div className="col-md-4">
+                            <div className="fest-1"><div className="img-wrapper-in">
+                                <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid inner-img-1"  /></div>
+                                <div className="fest-2">
+                                    <h4>{post.propertyType.toUpperCase()}</h4>
+                                </div>
+                                <div className="fest-3">
+                                    <h3>{post.propertyName}</h3>
+                                    <p><i className="fa fa-map-marker" aria-hidden="true"></i>{post.title}</p>
+                                    <Link href="#">Learn More</Link>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    </div>
                     <div className="row justify-content-center align-items-center">
                         <div className="col-md-8">
                             <div className="bnt-in">
@@ -244,7 +197,7 @@ function Home() {
                             </div>
                         </div>
                         <div className="col-md-6 txc-1">
-                            <img src="https://grammarpros.com/wp-content/uploads/2018/07/shutterstock_789378616.jpg" className="img-fluid" alt=""/>
+                            <img src="https://grammarpros.com/wp-content/uploads/2018/07/shutterstock_789378616.jpg" className="img-fluid" alt="" />
                         </div>
                     </div>
                 </div>
@@ -314,7 +267,7 @@ function Home() {
             </section>
             <section>
                 <div className="map-in">
-                    <iframe  title="myFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3104.915318631045!2d-77.03608318528994!3d38.903051754217145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7be2eeea3fd%3A0x55d774f5b6a285a7!2s1010%20Vermont%20Ave%20NW%20Suite%20716%2C%20Washington%2C%20DC%2020005!5e0!3m2!1sen!2sus!4v1663680550999!5m2!1sen!2sus"
+                    <iframe title="myFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3104.915318631045!2d-77.03608318528994!3d38.903051754217145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7be2eeea3fd%3A0x55d774f5b6a285a7!2s1010%20Vermont%20Ave%20NW%20Suite%20716%2C%20Washington%2C%20DC%2020005!5e0!3m2!1sen!2sus!4v1663680550999!5m2!1sen!2sus"
                         width={"100%"} height="330" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
                 </div>

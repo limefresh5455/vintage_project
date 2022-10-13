@@ -8,12 +8,12 @@ export default {
       title: 'Character Name',
       type: 'string',
     },
-    {
-      name: 'person',
-      title: 'Actor',
-      type: 'reference',
-      to: [{type: 'person'}],
-    },
+    // {
+    //   name: 'person',
+    //   title: 'Actor',
+    //   type: 'reference',
+    //   to: [{type: 'person'}],
+    // },
     {
       name: 'externalId',
       title: 'External ID',
