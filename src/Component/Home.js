@@ -1,25 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import sanityClient from "../client"
+import propertyServices from "../service/propertySerive";
 function Home() {
     const [postData, setPost] = useState(null);
-    console.log(postData)
+    console.log(postData);
+    function getPropertyData() {
+        new propertyServices().getPropertyData().then(data => {
+            setPost(data)
+        });
+    }
     useEffect(() => {
-        sanityClient
-            .fetch(`*[_type=="property"]{
-                     _id,
-                    title,
-                    releaseDate,
-                    poster{
-                      asset->{
-                        _id,
-                        url
-                      },
-                      alt
-                    },
-                    propertyName,
-                    propertyType 
-          }`).then((data) => setPost(data)).catch(console.error)
+        getPropertyData();
+        return () => {
+        }
     }, []);
 
     const ref = useRef(null);
@@ -107,7 +100,6 @@ function Home() {
                             </div>
                         </div>
 
-
                         <div className="col-md-6">
                             <div className="ctg-content">
                                 <div className="ctg-cnt-1 mrb">
@@ -137,22 +129,21 @@ function Home() {
                         </div>
                     </div>
                     <div className="row">
-                    {postData && postData.map((post, index) => (
-
-                        <div className="col-md-4">
-                            <div className="fest-1"><div className="img-wrapper-in">
-                                <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid inner-img-1"  /></div>
-                                <div className="fest-2">
-                                    <h4>{post.propertyType.toUpperCase()}</h4>
-                                </div>
-                                <div className="fest-3">
-                                    <h3>{post.propertyName}</h3>
-                                    <p><i className="fa fa-map-marker" aria-hidden="true"></i>{post.title}</p>
-                                    <Link href="#">Learn More</Link>
+                        {postData && postData.map((post, index) => (
+                            <div className="col-md-4" key={index}>
+                                <div className="fest-1"><div className="img-wrapper-in">
+                                    <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid inner-img-1" /></div>
+                                    <div className={(post.propertyType.toUpperCase() === "SALE" ? "fest-2 new-bg " : "fest-2")}>
+                                        <h4>For {post.propertyType.toUpperCase()}</h4>
+                                    </div>
+                                    <div className="fest-3">
+                                        <h3>{post.propertyName}</h3>
+                                        <p><i className="fa fa-map-marker" aria-hidden="true"></i>{post.propertyAddress}</p>
+                                        <Link href="#">Learn More</Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                     </div>
                     <div className="row justify-content-center align-items-center">
                         <div className="col-md-8">

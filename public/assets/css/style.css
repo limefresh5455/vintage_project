@@ -3167,7 +3167,7 @@ section:hover .owl-next {
     color: #fff;
 }
 
-
+.row{    row-gap: 20px;}
 .img-wrapper-in {
     overflow: hidden;
 }

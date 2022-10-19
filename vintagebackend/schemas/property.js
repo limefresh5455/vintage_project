@@ -7,8 +7,8 @@ export default {
   icon,
   fields: [
     {
-      name: 'title',
-      title: 'Title',
+      name: 'propertyName',
+      title: 'Property Name',
       type: 'string',
     },
     {
@@ -16,13 +16,13 @@ export default {
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'propertyName',
         maxLength: 100,
       },
     },
     {
-      name: 'propertyName',
-      title: 'Property Name',
+      name: 'propertyAddress',
+      title: 'Property Address',
       type: 'string',
     },
     // {
@@ -33,7 +33,10 @@ export default {
     {
       name: 'releaseDate',
       title: 'Release date',
-      type: 'datetime',
+      type: 'date',
+      by: [
+        {field: 'releaseDate', direction: 'asc'}
+      ]
     },
     // {
     //   name: 'leaseProperty',
@@ -52,6 +55,10 @@ export default {
         ]
       }
     },
+
+    
+    
+    
     {
       name: 'poster',
       title: 'Poster Image',
@@ -75,7 +82,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'propertyName',
       date: 'releaseDate',
       media: 'poster',
       castName0: 'castMembers.0.person.name',

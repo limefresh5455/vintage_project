@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import sanityClient from "../client"
+import propertyServices from "../service/propertySerive";
 function Sale() {
   const [postData, setPost] = useState(null);
   console.log(postData)
+ 
+  function getSalePropertyData() {
+    new propertyServices().getSalePropertyData().then(data => {
+      setPost(data)
+    });
+  }
+
   useEffect(() => {
-    sanityClient
-      .fetch(`*[_type=="property"]{
-                 _id,
-                title,
-                releaseDate,
-                poster{
-                  asset->{
-                    _id,
-                    url
-                  },
-                  alt
-                },
-                propertyName,
-                propertyType
-      }`).then((data) => setPost(data)).catch(console.error)
+    getSalePropertyData();
+    return () => {
+    }
   }, []);
 
   return (
@@ -56,7 +51,7 @@ function Sale() {
                     <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid img-hit-st" />
                     <div className="simple-text">
                       <h3><i className="fa fa-map-marker" aria-hidden="true"></i>{post.propertyName}</h3>
-                      <p> {post.title}</p>
+                      <p> {post.propertyAddress}</p>
                     </div>
                     <div className="overlay-sim-text-2 overlay-xs-1">
                       <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>

@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
-import sanityClient from "../client"
 import { Link } from "react-router-dom";
+import propertyServices from "../service/propertySerive";
 function Lease() {
   const [postLeaseData, setLeasePost] = useState(null);
   console.log(postLeaseData)
+
+  function getLeasePropertyData() {
+    new propertyServices().getLeasePropertyData().then(data => {
+      setLeasePost(data)
+    });
+  }
+
   useEffect(() => {
-    sanityClient
-      .fetch(`*[_type=="property"]{
-                 _id,
-                title,
-                releaseDate,
-                poster{
-                  asset->{
-                    _id,
-                    url
-                  },
-                  alt
-                },
-                propertyName,
-                propertyType
-      }`).then((data) => setLeasePost(data) , {prpertyType:"lease"}).then((data) => console.log(postLeaseData)).catch(console.error)
+    getLeasePropertyData();
+    return () => {
+      console.log("getdata");
+    }
   }, []);
 
   return (
@@ -51,8 +47,8 @@ function Lease() {
                 <div className="effect-image-1">
                   <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid img-hit-st" />
                   <div className="simple-text">
-                    <h3><i className="fa fa-map-marker" aria-hidden="true" ></i>{post.title}</h3>
-                    <p>4316 St Barnabas Rd, Marlow Heights, MD 20748</p>
+                    <h3><i className="fa fa-map-marker" aria-hidden="true" ></i>{post.propertyName}</h3>
+                    <p>8{post.propertyAddress}</p>
                   </div>
                   <div className="overlay-sim-text-2 overlay-xs-1">
                     <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
