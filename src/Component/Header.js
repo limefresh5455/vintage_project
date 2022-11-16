@@ -61,7 +61,7 @@ function Header() {
                                 <li className="nav-item"> <Link className={splitLocation[1] === "ourTeam" ? "active-link nav-link" : "nav-link"} to="/ourTeam">Our Team</Link> </li>
                                 <li className="nav-item"> <Link className={splitLocation[1] === "contact" ? "active-link nav-link" : "nav-link"} to="/contact">Contact Us</Link> </li>
                                 <li className="nav-item"><button onClick={() => Auth.federatedSignIn({ provider:"Google" })}>Google</button></li>
-                                <li className="nav-item">  <button onClick={()=>Auth.federatedSignIn()}>Sign in </button></li>
+                                {/* <li className="nav-item">  <button onClick={()=>Auth.federatedSignIn()}>Sign in </button></li> */}
                             </ul>
                         </div>
                     </nav>

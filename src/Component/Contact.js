@@ -1,46 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import React, { useState, useEffect, useRef } from "react";
-import sanityClient from "../client"
-//import contactService from "../service/contactService";
-import commentService from '../service/commentService';
-import { useParams } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
-import { useForm } from 'react-hook-form';
 function Contact() {
-  const {_id}=useParams()
-//console.log(id);
-  const [postData, setPostData] = useState(null);
-  const { slug } = useParams();
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  
- 
-  // function getAllComments() {
-  //     {
-  //       return sanityClient.fetch(
-  //         `*[_type == "comment"]{
-  //                 _id, 
-  //                 name, 
-  //                 email, 
-  //                 comment, 
-  //                 _createdAt
-  //             }
-  //         }`,{ slug }).then((data) => { console.log(data);}).catch(console.error);
-  //     }
-  //   }
-
-  function createComments(formData) {
-    console.log(formData);
-    if (formData) {
-      return sanityClient.create({
-        _type: 'comment', 
-        id: formData.id,
-        name: formData.name,
-        email: formData.email,
-        comment: formData.comment,
-      }).then((res) => { console.log(res) }).catch((err) => { console.log(err); });
-    }
-  }
-
   return (
     <div>
       <section className="pd-1 pd-2 bg-contact">
@@ -60,39 +20,21 @@ function Contact() {
             <div className="col-md-6">
               <div className="contact-form-start">
                 <h2>Have Questions</h2>
-                <form onSubmit={handleSubmit(createComments)}>
-                  {/* <input {...register("_id")} type="hidden" name="_id" value="0ae23b8a-5678-478b-93fe-7b49d135874f"/> */}
+                <form>
                   <div className="form-group">
-                    <input type="text" name="name" {...register("name", {
-                      required: "This field is required",
-                    })} className="form-control" placeholder="Name*" id="usr" />
-                    {errors.name && <p className="errorMsg">{errors.name.message}</p>}
+                    <input type="text" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name" />
                   </div>
                   <div className="form-group">
-                    <input type="text" name="id" {...register("id", {
-                      required: "This field is required",
-                      
-                    })} className="form-control" placeholder="id"  />
-                    {/* {errors.email && <p className="errorMsg">{errors.email.message}</p>} */}
+                    <input type="number" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Contact No." />
                   </div>
                   <div className="form-group">
-                    <input type="text" name="email" {...register("email", {
-                      required: "This field is required",
-                      pattern: {
-                        value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                        message: "Invalid email address"
-                      }
-                    })} className="form-control" placeholder="Email*" id="email" />
-                    {errors.email && <p className="errorMsg">{errors.email.message}</p>}
+                    <input type="email" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" />
                   </div>
                   <div className="form-group">
-                    <textarea name="comment" {...register("comment", {
-                      required: "This field is required",
-                    })} className="form-control" rows="5" placeholder="Comment" id="comment"></textarea>
-                    {errors.comment && <p className="errorMsg">{errors.comment.message}</p>}
+                    <textarea className="form-control form-control-in" id="exampleFormControlTextarea1" rows="4" placeholder="Message"></textarea>
                   </div>
-                  <div className="form-group mt-4">
-                    <input type="submit" className="readmore" value="Post Comment" />
+                  <div className="below-btn-1">
+                    <Link className="arrow-button-3">Submit<span className="arrow-3"></span></Link>
                   </div>
                 </form>
               </div>
