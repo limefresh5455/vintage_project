@@ -10,10 +10,7 @@ import Footer from "./Component/Footer";
 import Header from "./Component/Header"
 import { Auth } from "aws-amplify";
 import React from 'react';
-import { Amplify } from 'aws-amplify'
-import config from './aws-exports';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-Amplify.configure(config)
 function App() {
   return (
     <BrowserRouter>
@@ -29,7 +26,6 @@ function App() {
         <Route path='/contact' element={<Contact />} />
       </Routes>
       <Footer />
-      <button onClick={() => Auth.signOut()}>Sign out </button>
     </BrowserRouter>
   );
 }

@@ -40,7 +40,7 @@ function Footer() {
                                     <li><Link href="#"><i className="fa fa-twitter" aria-hidden="true"></i></Link></li>
                                     <li><Link href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></Link></li>
                                     <li><Link href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></Link></li>
-                                    <button onClick={() => Auth.signOut()}>Sign out </button>
+                                    {/* <button onClick={() => Auth.signOut()}>Sign out </button> */}
                                 </ul>
                             </div>
                         </div>
