@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "vantageauth51231244_identitypool_51231244",
+    "identityPoolName": "vantagelogin146d4159_identitypool_146d4159",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "vantag51231244",
-    "userPoolName": "vantageauth51231244_userpool_51231244",
+    "resourceNameTruncated": "vantag146d4159",
+    "userPoolName": "vantagelogin146d4159_userpool_146d4159",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,14 +31,14 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "vantag51231244_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "vantag146d4159_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "51231244",
-    "resourceName": "vantageauth51231244",
+    "sharedId": "146d4159",
+    "resourceName": "vantagelogin146d4159",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "defaultSocial",
     "hostedUI": true,
-    "hostedUIDomainName": "vantageauth51231244-51231244",
+    "hostedUIDomainName": "vantagelogin146d4159-146d4159",
     "authProvidersUserPool": [],
     "hostedUIProviderMeta": "[]",
     "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",

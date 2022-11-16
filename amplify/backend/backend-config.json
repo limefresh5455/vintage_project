@@ -1,6 +1,6 @@
 {
   "auth": {
-    "vantageauth51231244": {
+    "vantagelogin146d4159": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
