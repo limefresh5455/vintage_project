@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vantageauth-dev-151224-authRole",
+      "UnauthRoleArn": "arn:aws:iam::624046712989:role/amplify-vantageauth-dev-151224-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::624046712989:role/amplify-vantageauth-dev-151224-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-vantageauth-dev-151224-deployment",
+      "UnauthRoleName": "amplify-vantageauth-dev-151224-unauthRole",
+      "StackName": "amplify-vantageauth-dev-151224",
+      "StackId": "arn:aws:cloudformation:us-east-1:624046712989:stack/amplify-vantageauth-dev-151224/d20e9ad0-64c9-11ed-82b3-0e6cbdd23f15",
+      "AmplifyAppId": "d1m2ljgydvqmog"
+    },
+    "categories": {
+      "auth": {
+        "vantageauth51231244": {}
+      }
+    }
+  }
+}

@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Amplify } from 'aws-amplify'
+import config from '../aws-exports';
+import { Auth } from "aws-amplify";
 
+Amplify.configure(config)
 function Footer() {
     return (
         <div>
@@ -36,6 +40,7 @@ function Footer() {
                                     <li><Link href="#"><i className="fa fa-twitter" aria-hidden="true"></i></Link></li>
                                     <li><Link href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></Link></li>
                                     <li><Link href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></Link></li>
+                                    <button onClick={() => Auth.signOut()}>Sign out </button>
                                 </ul>
                             </div>
                         </div>

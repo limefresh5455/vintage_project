@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Link, useLocation  } from "react-router-dom";
+import { Auth } from "aws-amplify";
 function Header() {
     const aref = useRef(null);
     const [scroll, setScroll] = useState(false);
@@ -59,6 +60,8 @@ function Header() {
                                 <li className="nav-item"><Link className={splitLocation[1] === "recents" ? "active-link nav-link" : "nav-link"} to="/recents">Recents</Link>  </li>
                                 <li className="nav-item"> <Link className={splitLocation[1] === "ourTeam" ? "active-link nav-link" : "nav-link"} to="/ourTeam">Our Team</Link> </li>
                                 <li className="nav-item"> <Link className={splitLocation[1] === "contact" ? "active-link nav-link" : "nav-link"} to="/contact">Contact Us</Link> </li>
+                                <li className="nav-item"><button onClick={() => Auth.federatedSignIn({ provider:"Google" })}>Google</button></li>
+                                <li className="nav-item">  <button onClick={()=>Auth.federatedSignIn()}>Sign in </button></li>
                             </ul>
                         </div>
                     </nav>
