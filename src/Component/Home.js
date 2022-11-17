@@ -28,7 +28,7 @@ function Home() {
                 </video> <div className="overlay"></div> */}
 
                 <video playsinline="playsInline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src={"assets/images/vedio/vedio-3.mp4"} type="video/mp4" />
+        <source src="assets/images/vedio/vedio-3.mp4" type="video/mp4" />
       </video>
 
                 <div className="banner-innner">

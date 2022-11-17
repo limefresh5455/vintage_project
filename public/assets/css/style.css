@@ -30,8 +30,8 @@
 
 @font-face {
     font-family: 'Chronicle Display';
-    src: url('ChronicleDisplay-Black.woff2') format('woff2'),
-        url('ChronicleDisplay-Black.woff') format('woff');
+    /* src: url('ChronicleDisplay-Black.woff2') format('woff2'),
+        url('ChronicleDisplay-Black.woff') format('woff'); */
     font-weight: 900;
     font-style: normal;
     font-display: swap;
@@ -49,7 +49,7 @@ body {
 }
 .navbar{
     padding:0  !important;
-    
+
 }
 .newClass {
     border: none;
