@@ -25,7 +25,7 @@ function Contact() {
                     <input type="text" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name" />
                   </div>
                   <div className="form-group">
-                    <input type="number" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Contact No." />
+                    <input type="text" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Contact No." />
                   </div>
                   <div className="form-group">
                     <input type="email" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" />
@@ -42,15 +42,15 @@ function Contact() {
             <div className="col-md-6">
               <div className="contact-us-in">
                 <h3>Get In Touch</h3>
-                <div className="cnt-in-5">
-                  <div className="icn-in">
+                {/* <div className="cnt-in-5"> */}
+                  {/* <div className="icn-in">
                     <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                  </div>
-                  <div className="icn-in-1">
+                  </div> */}
+                  {/* <div className="icn-in-1">
                     <h4>Email:</h4>
                     <p>https://vantagecr.com/</p>
-                  </div>
-                </div>
+                  </div> */}
+                {/* </div> */}
 
                 <div className="cnt-in-5">
                   <div className="icn-in">
