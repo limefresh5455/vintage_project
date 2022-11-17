@@ -28,8 +28,8 @@ function Home() {
                 </video> <div className="overlay"></div> */}
 
                 <video playsinline="playsInline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" />
-      </video>
+                    <source src={process.env.PUBLIC_URL + 'assets/images/vedio/vedio-3.mp4'} type="video/mp4" />
+                </video>
 
                 <div className="banner-innner">
                     <div className="container">
