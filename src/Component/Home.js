@@ -22,10 +22,14 @@ function Home() {
     return (
         <>
             <div className="banner">
-                <video autoPlay muted loop className="tagline-video">
-                    <source className="h-100" src="assets/images/vedio/vedio-3.mp4" type="video/mp4" />
+                {/* <video autoPlay muted loop className="tagline-video">
+                    <source className="h-100" src="assets/images/vedio/vedio-3.mp4 " type="video/mp4" />
                     <source src="assets/images/vedio/vedio-3.mp4" type="video/ogg"></source>
-                </video> <div className="overlay"></div>
+                </video> <div className="overlay"></div> */}
+
+                <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="assets/images/vedio/vedio-3.mp4" type="video/mp4" />
+      </video>
 
                 <div className="banner-innner">
                     <div className="container">
