@@ -88,7 +88,6 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-
                         <div className="col-md-6">
                             <div className="ctg-content">
                                 <div>
@@ -100,7 +99,6 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-
                         <div className="col-md-6">
                             <div className="ctg-content">
                                 <div className="ctg-cnt-1 mrb">
@@ -116,9 +114,6 @@ function Home() {
 
                 </div>
             </section>
-
-            {/* <!-- catogaries-end --> */}
-
             {/* </div> */}
             <section className="pd-1 pd-2">
                 <div className="container">
@@ -163,11 +158,9 @@ function Home() {
                                 What People Say
                             </div>
                             <div id="testimonial4" className="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
-
                                 <div className="carousel-inner" role="listbox">
                                     <div className="carousel-item active">
                                         <div className="testimonial4_slide">
-
                                             <p><i className="fa fa-quote-left" aria-hidden="true"></i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <i className="fa fa-quote-right" aria-hidden="true"></i></p>
                                             <h4>John Doe</h4>
                                         </div>
@@ -185,7 +178,6 @@ function Home() {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div className="col-md-6 txc-1">
@@ -219,7 +211,6 @@ function Home() {
                                 </form>
                             </div>
                         </div>
-
                         <div className="col-md-7">
                             <div className="contact-us-in">
                                 <h3>Get In Touch</h3>

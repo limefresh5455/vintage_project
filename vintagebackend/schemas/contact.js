@@ -20,11 +20,7 @@ export default {
         maxLength: 100,
       },
     },
-    {
-      name: 'email',
-      title: 'Email',
-      type: 'string',
-    },
+
     {
         name: 'message',
         title: 'Message',
@@ -36,11 +32,8 @@ export default {
         title: 'Contact No',
         type: 'string',
       },
-    // {
-    //   name: 'overview',
-    //   title: 'Overview',
-    //   type: 'blockContent',
-    
+
+
   ],
   preview: {
     select: {

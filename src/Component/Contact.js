@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import contactService from "../service/contactService";
+import { ToastContainer } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 function Contact() {
+  // const [postData, setPostData] = useState(null);
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  useEffect(() => { })
+
+  const onSubmit = (data, e) => {
+    console.log('submitdat', data)
+    new contactService().createContact(data).then(res => {
+      console.log("new result", res);
+      if (res === "Success") {
+        // new toaster().successMessage("comments added successfully.");
+        // new blogService().getBlogBySlug(slug).then(data => {
+        //   setPostData(data)
+        // });
+        e.target.reset();
+      } else {
+        console.log("Error");
+      }
+    });
+  }
+
   return (
     <div>
       <section className="pd-1 pd-2 bg-contact">
@@ -20,21 +43,32 @@ function Contact() {
             <div className="col-md-6">
               <div className="contact-form-start">
                 <h2>Have Questions</h2>
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  {/* <input {...register("_id")} type="hidden" name="_id"  /> */}
                   <div className="form-group">
-                    <input type="text" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name" />
+                    <input type="text" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full name"
+                      {...register("fullName", {
+                        required: "This field is required",
+                      })} />
+
                   </div>
                   <div className="form-group">
-                    <input type="text" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Contact No." />
+                    <input type="text" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Contact No."
+                      {...register("contact", {
+                        required: "This field is required",
+                      })} />
                   </div>
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <input type="email" className="form-control form-control-in" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" />
-                  </div>
+                  </div> */}
                   <div className="form-group">
-                    <textarea className="form-control form-control-in" id="exampleFormControlTextarea1" rows="4" placeholder="Message"></textarea>
+                    <textarea className="form-control form-control-in" id="exampleFormControlTextarea1" rows="4" placeholder="Message"
+                      {...register("message", {
+                        required: "This field is required",
+                      })}></textarea>
                   </div>
-                  <div className="below-btn-1">
-                    <Link className="arrow-button-3">Submit<span className="arrow-3"></span></Link>
+                  <div className="form-group mt-4">
+                    <input type="submit" className="arrow-button-3" value="Submit" /><span className="arrow-3"></span>
                   </div>
                 </form>
               </div>
@@ -43,10 +77,10 @@ function Contact() {
               <div className="contact-us-in">
                 <h3>Get In Touch</h3>
                 {/* <div className="cnt-in-5"> */}
-                  {/* <div className="icn-in">
+                {/* <div className="icn-in">
                     <i className="fa fa-envelope-o" aria-hidden="true"></i>
                   </div> */}
-                  {/* <div className="icn-in-1">
+                {/* <div className="icn-in-1">
                     <h4>Email:</h4>
                     <p>https://vantagecr.com/</p>
                   </div> */}
