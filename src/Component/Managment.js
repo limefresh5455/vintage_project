@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import contentServices from "../service/contentService";
+import subContentServices from "../service/subContentService";
 function Managment() {
+  const [postData, setPost] = useState(null);
+  const [subPostData, setsubPost] = useState(null);
+  console.log(subPostData);
+  function getManagementData() {
+    new contentServices().getManagementData().then(data => {
+      setPost(data)
+    });
+  }
+  function getSubManagementData() {
+    new subContentServices().getSubManagementData().then(data => {
+      setsubPost(data)
+    });
+  }
+  useEffect(() => {
+    getManagementData();
+    getSubManagementData();
+    return () => {
+    }
+  }, []);
   return (
     <div>
       <section className="pd-1 pd-2 bg-managment" >
@@ -16,27 +37,25 @@ function Managment() {
       </section>
       <section className="pd-1 pd-2">
         <div className="container">
-          <div className="row d-flex justify-content-center align-items-center">
-            <div className="col-md-6">
-              <div className="about-content">
-                <h3>Welcome To <span className="span3" >Vantage</span></h3>
-                <p>Vantage Commercial Realty is a boutique brokerage house located in Washington, D.C., was founded in 2005,investors and developers since then.</p>
-                <h5>Fees Structure</h5>
-                <p>We offer property owners a competitive monthly management fee, ranging from 3% to 10%. This fee depends on factors such as the number of units managed by our team, the monthly rental cost, and the location of the property.</p>
-                <p>Vantage Management does not charge our clients for routine maintenance, property vacancy, and start-up and termination fees.
-                  **If a tenant if eviction within 6 months of our services, we will be happy to lease your rental property without any charges**</p>
+          {postData && postData.map((post, index) => (
+            <div className="row d-flex justify-content-center align-items-center">
+              <div className="col-md-6">
+                <div className="about-content">
+                  <h3>Welcome To <span className="span3" >Vantage</span></h3>
+                  <p>{post.message}</p>
 
-                <div className="below-btn-1">
-                  <Link className="arrow-button-3">Find Out More<span className="arrow-3"></span></Link>
+                  <div className="below-btn-1">
+                    <Link className="arrow-button-3">Find Out More<span className="arrow-3"></span></Link>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="img-content-1">
+                  <img src={post.poster.asset.url} className="img-fluid" alt="" />
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="img-content-1">
-                <img src="https://informa-mea-res.cloudinary.com/image/upload/training/course-images/certificate-in-business-process-management-improvement-training-course.jpg" className="img-fluid" alt=""/>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
       {/* <!-- about-content-end --> */}
@@ -54,14 +73,16 @@ function Managment() {
           </div>
 
           <div className="row">
-            <div className="col-md-4">
-              <div className="mg-head-content">
-                <img src="assets/images/mgo-1.png" className="img-fluid" alt="" />
-                <h4>Leasing Services</h4>
-                <p>Vantage Management strategically markets individual properties, using search engines and off-site marketing tactics. Our available rental properties can be found on all major search engines and online classNameifieds.</p>
+            {subPostData && subPostData.map((post, index) => (
+              <div className="col-md-4">
+                <div className="mg-head-content">
+                  <img src={post.poster.asset.url} className="img-fluid" alt="" />
+                  <h4>{post.heading}</h4>
+                  <p>Vantage Management strategically markets individual properties, using search engines and off-site marketing tactics. Our available rental properties can be found on all major search engines and online classNameifieds.</p>
+                </div>
               </div>
-            </div>
-            <div className="col-md-4">
+            ))}
+            {/* <div className="col-md-4">
               <div className="mg-head-content">
                 <img src="assets/images/mgo-2.png" className="img-fluid" alt="" />
                 <h4>Accountability</h4>
@@ -74,10 +95,10 @@ function Managment() {
                 <h4>Our Mission</h4>
                 <p>The Vantage Management team strives to provide efficient and cost-effective service to our clients. We are committed to supporting our clients throughout all aspects of the management process.</p>
               </div>
-            </div>
+            </div> */}
           </div>
 
-          <div className="row justify-content-center pd-9">
+          {/* <div className="row justify-content-center pd-9">
             <div className="col-md-4">
               <div className="mg-head-content">
                 <img src="assets/images/mgo-4.png" className="img-fluid" alt="" />
@@ -96,7 +117,7 @@ function Managment() {
                   Our Customer Service representatives receive </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

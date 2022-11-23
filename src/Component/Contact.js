@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import contactService from "../service/contactService";
 import { ToastContainer } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Contact() {
-  // const [postData, setPostData] = useState(null);
   const { register, handleSubmit, formState: { errors } } = useForm();
   useEffect(() => { })
 
@@ -14,9 +15,6 @@ function Contact() {
       console.log("new result", res);
       if (res === "Success") {
         // new toaster().successMessage("comments added successfully.");
-        // new blogService().getBlogBySlug(slug).then(data => {
-        //   setPostData(data)
-        // });
         e.target.reset();
       } else {
         console.log("Error");
@@ -26,6 +24,17 @@ function Contact() {
 
   return (
     <div>
+       <ToastContainer
+    position="top-right"
+    autoClose={3000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    />
       <section className="pd-1 pd-2 bg-contact">
         <div className="container">
           <div className="row">

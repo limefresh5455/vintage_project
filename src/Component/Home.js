@@ -1,16 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import propertyServices from "../service/propertySerive";
+import homeServices from "../service/homeService";
 function Home() {
     const [postData, setPost] = useState(null);
-    console.log(postData);
+    const [homeData, sethomePost] = useState(null);
+    console.log(homeData);
     function getPropertyData() {
         new propertyServices().getPropertyData().then(data => {
             setPost(data)
         });
     }
+    function gethomeData() {
+        new homeServices().gethomeData().then(data => {
+            sethomePost(data)
+        });
+    }
     useEffect(() => {
         getPropertyData();
+        gethomeData();
         return () => {
         }
     }, []);
@@ -66,39 +74,19 @@ function Home() {
             <section className="pd-1 pd-4 bg-in2">
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-6">
-                            <div className="ctg-content">
-                                <div>
-                                    <img src="assets/images/ctg2.png" className="img-fluid img-hit" alt="img1" /></div>
-                                <div className="ctg-cnt-1">
-                                    <h3>Our Properties</h3>
-                                    <p>Our extensive experience and expertise in real estate allows us to offer a full spectrum of services</p>
-                                    <Link href="#" className="btn-7">Find Out<i className="fa fa-angle-double-right" aria-hidden="true"></i></Link>
+                        {homeData && homeData.map((post, index) => (
+                            <div className="col-md-6">
+                                <div className="ctg-content">
+                                    <div>
+                                        <img src={post.poster.asset.url} className="img-fluid img-hit" alt="img1" /></div>
+                                    <div className="ctg-cnt-1">
+                                        <h3>{post.heading}</h3>
+                                        <p>{post.message}</p>
+                                        <Link href="#" className="btn-7">Find Out<i className="fa fa-angle-double-right" aria-hidden="true"></i></Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="ctg-content">
-                                <div>
-                                    <img src="assets/images/ctg-in.png" className="img-fluid img-hit" alt="img1" /></div>
-                                <div className="ctg-cnt-1">
-                                    <h3>Our Sale</h3>
-                                    <p>Our extensive experience and expertise in real estate allows us to offer a full spectrum of services</p>
-                                    <Link href="#" className="btn-7">Find Out<i className="fa fa-angle-double-right" aria-hidden="true"></i></Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="ctg-content">
-                                <div>
-                                    <img src="assets/images/ctg5.png" className="img-fluid img-hit" alt="img1" /></div>
-                                <div className="ctg-cnt-1">
-                                    <h3>FOR Lease</h3>
-                                    <p>Our extensive experience and expertise in real estate allows us to offer a full spectrum of services</p>
-                                    <Link to="/lease" className="btn-7">Find Out<i className="fa fa-angle-double-right" aria-hidden="true"></i></Link>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                         <div className="col-md-6">
                             <div className="ctg-content">
                                 <div className="ctg-cnt-1 mrb">

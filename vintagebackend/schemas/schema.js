@@ -9,6 +9,10 @@ import crewMember from './crewMember'
 import castMember from './castMember'
 import property from './property'
 import contact from './contact'
+import content from './content'
+import subContent from './subContent'
+import ourTeam from './ourTeam'
+import home from './home'
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -20,5 +24,9 @@ export default createSchema({
     castMember,
     crewMember,
     contact,
+    content,
+    subContent,
+    ourTeam,
+    home
   ]),
 })
