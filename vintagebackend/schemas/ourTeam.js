@@ -8,7 +8,7 @@ export default {
   fields: [
     {
       name: 'fullName',
-      title: 'Full Name',
+      title: 'Name Of Contact',
       type: 'string',
     },
     {
@@ -20,14 +20,26 @@ export default {
         maxLength: 100,
       },
     },
-
     {
-        name: 'designation',
-        title: 'Designation',
-        type: 'text',
-      },
-
-
+      name: 'position',
+      title: 'Position',
+      type: 'string',
+    },
+    {
+      name: 'email',
+      title: 'Email',
+      type: 'string',
+    },
+    {
+      name: 'officePhone',
+      title: 'Office Phone',
+      type: 'number',
+    },
+    {
+      name: 'mobile',
+      title: 'Mobile',
+      type: 'number',
+    },
       {
         name: 'poster',
         title: 'Poster Image',

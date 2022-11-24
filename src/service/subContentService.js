@@ -58,6 +58,8 @@ class subContentServices {
          alt
        },
        message,
+       propertyAddress,
+       propertyType,
            }`).then(respon => {
         return respon
       }).catch(error => {

@@ -5,7 +5,8 @@ import ourTeamServices from "../service/ourTeamService";
 function OurTeam() {
   const [postData, setPost] = useState(null);
   const [teamData, setTeamPost] = useState(null);
-  console.log(postData);
+  
+  console.log(teamData,'rrrrrrrrrrrr');
   function getOurteamData() {
       new contentServices().getOurteamData().then(data => {
         setPost(data)
@@ -77,7 +78,7 @@ function OurTeam() {
               <div className="card-area">
                 <img src={post.poster.asset.url} className="img-fluid" alt=""/>
                 <h3>{post.fullName}</h3>
-                <p>Principal Broker</p>
+                <p>{post.position}</p>
                 <div className="icon-mg-1">
                   <Link href="#"><i className="fa fa-skype" aria-hidden="true"></i></Link>
                   <Link href="#"><i className="fa fa-twitter" aria-hidden="true"></i></Link>
@@ -86,10 +87,7 @@ function OurTeam() {
               </div>
             </div>
              ))}
-
           </div>
-
-
         </div>
       </section>
          </div>

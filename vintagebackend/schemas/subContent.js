@@ -12,6 +12,24 @@ export default {
         type: 'string',
       },
 
+      {
+        name: 'propertyAddress',
+        title: 'Property Address',
+        type: 'string',
+      },
+
+      {
+        name: 'propertyType',
+        title: 'Property Type',
+        type: 'string',
+        options:{
+          list:[
+         {value:"sale",title:"For Sale"},
+         {value:"lease",title:"For Lease"},
+          ]
+        }
+      },
+  
     {
       name: 'slug',
       title: 'Slug',
@@ -29,7 +47,6 @@ export default {
       text: "strong",
 
     },
-
     {
       name: 'contentType',
       title: 'Content Type',
@@ -56,7 +73,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'contentType',
+      title: 'heading',
       date: 'releaseDate',
       media: 'poster',
       castName0: 'castMembers.0.person.name',

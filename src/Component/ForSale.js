@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import propertyServices from "../service/propertySerive";
 function Sale() {
   const [postData, setPost] = useState(null);
-  console.log(postData)
  
   function getSalePropertyData() {
     new propertyServices().getSalePropertyData().then(data => {
+      console.log(data,"opopopopoop")
       setPost(data)
     });
   }
@@ -51,7 +51,7 @@ function Sale() {
                     <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid img-hit-st" />
                     <div className="simple-text">
                       <h3><i className="fa fa-map-marker" aria-hidden="true"></i>{post.propertyName}</h3>
-                      <p> {post.propertyAddress}</p>
+                      <p> {post.propertyAddress}</p>              
                     </div>
                     <div className="overlay-sim-text-2 overlay-xs-1">
                       <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>

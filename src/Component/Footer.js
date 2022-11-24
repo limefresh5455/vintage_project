@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Amplify } from 'aws-amplify'
-import config from '../aws-exports';
-import { Auth } from "aws-amplify";
+// import config from '../aws-exports';
+// import { Auth } from "aws-amplify";
 
-Amplify.configure(config)
+// Amplify.configure(config)
 function Footer() {
     return (
         <div>

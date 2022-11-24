@@ -43,7 +43,17 @@ export default {
     //   title: 'Lease Property',
     //   type: 'datetime',
     // },
-    
+    {
+      name: 'size',
+      title: 'Size',
+      type: 'string',
+    },
+    {
+      name: 'price',
+      title: 'Price',
+      type: 'string',
+    },
+
     {
       name: 'propertyType',
       title: 'Property Type',
@@ -55,9 +65,11 @@ export default {
         ]
       }
     },
-
-    
-    
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    },
     
     {
       name: 'poster',
@@ -66,6 +78,35 @@ export default {
       options: {
         hotspot: true,
       },
+    },
+
+    {
+      name: 'agent',
+      title: 'Agent',
+      type: 'document',
+      icon,
+      fields: [
+        {
+          name: 'agentsName',
+          title: 'Agent`s Name',
+          type: 'string',
+        },
+        {
+          name: 'email',
+          title: 'Email',
+          type: 'string',
+        },
+        {
+          name: 'officePhone',
+          title: 'OfficePhone',
+          type: 'string',
+        },
+        {
+          name: 'agentsMobile',
+          title: 'Agent`s Mobile',
+          type: 'string',
+        },
+      ]
     },
     // {
     //   name: 'castMembers',

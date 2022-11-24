@@ -7,6 +7,10 @@ class ourTeamServices {
       .fetch(`*[_type=="ourTeam"]{
         _id,
         fullName,
+        position,
+        email,
+        officePhone,
+        mobile,
        releaseDate,
        poster{
          asset->{

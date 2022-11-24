@@ -60,7 +60,16 @@ class propertyServices {
                        alt
                      },
                      propertyAddress,
-                     propertyType 
+                     propertyType,
+                     size,
+                     price,
+                     description, 
+                     agent{
+                        agentsName,
+                        email,
+                        officePhone,
+                        agentsMobile
+                    },
            }`).then(respon => {
         return respon
       }).catch(error => {
