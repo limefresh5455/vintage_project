@@ -13,7 +13,7 @@ const MapContainer = ({ closeModal }) => {
 
     return (
         <div>
-            <button onClick={() => closeModal(false)}>close</button>
+            <button  class="arrow-button-3" onClick={() => closeModal(false)}>close</button>
             <GoogleMap
                 googleMapsApiKey='AIzaSyAGRFqUfpv4IpNnbudlN7oM0zBkCWNQmyY'
                 mapContainerStyle={mapStyles}

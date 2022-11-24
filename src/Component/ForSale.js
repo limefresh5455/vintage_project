@@ -57,8 +57,9 @@ function Sale() {
                       <p> {post.size}</p>
                     </div>
                     <div className="overlay-sim-text-2 overlay-xs-1">
+                    <button onClick={()=>{setOpenMap(true)}} className="btn btn-primary"> <i className="fa fa-map-marker" aria-hidden="true"></i></button>
                       <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
-                      <button onClick={()=>{setOpenMap(true)}} className="btn btn-primary">Location</button>
+
                     </div>
                   </div>
                 </div>
