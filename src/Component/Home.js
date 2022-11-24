@@ -243,10 +243,8 @@ function Home() {
                     ></iframe>
                 </div>
             </section>
-
         </>
     )
-
 }
 
 export default Home;

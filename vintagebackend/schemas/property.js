@@ -70,11 +70,20 @@ export default {
       title: 'Description',
       type: 'string',
     },
-    
+
     {
       name: 'poster',
       title: 'Poster Image',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+
+    {
+      name: 'video',
+      title: 'Property Video',
+      type: 'file',
       options: {
         hotspot: true,
       },

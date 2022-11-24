@@ -9,6 +9,7 @@ import Contact from './Component/Contact';
 import Footer from "./Component/Footer";
 import Header from "./Component/Header"
 import { Auth } from "aws-amplify";
+import GoogleApiWrapper from "./GoogleMap/map"
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
@@ -24,8 +25,10 @@ function App() {
         <Route path='/recents' element={<Recents />} />
         <Route path='/ourTeam' element={<OurTeam />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/map' element={<GoogleApiWrapper/>} />
       </Routes>
       <Footer />
+
     </BrowserRouter>
   );
 }

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import propertyServices from "../service/propertySerive";
+import GoogleApiWrapper from "../GoogleMap/map"
 function Sale() {
   const [postData, setPost] = useState(null);
- 
+  const [openMap, setOpenMap] = useState(false);
   function getSalePropertyData() {
     new propertyServices().getSalePropertyData().then(data => {
       console.log(data,"opopopopoop")
@@ -49,19 +50,24 @@ function Sale() {
                 <div className="col-md-4">
                   <div className="effect-image-1">
                     <img src={post.poster.asset.url} alt={post.poster.alt} className="img-fluid img-hit-st" />
+
                     <div className="simple-text">
                       <h3><i className="fa fa-map-marker" aria-hidden="true"></i>{post.propertyName}</h3>
-                      <p> {post.propertyAddress}</p>              
+                      <p> {post.propertyAddress}</p>
+                      <p> {post.size}</p>
                     </div>
                     <div className="overlay-sim-text-2 overlay-xs-1">
                       <Link href="#" className="btn-85"><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
+                      <button onClick={()=>{setOpenMap(true)}} className="btn btn-primary">Location</button>
                     </div>
                   </div>
                 </div>
               // </div>
             ))}
           </div>
+        {openMap&&<GoogleApiWrapper closeModal={setOpenMap}/>}
         </div>
+
       </section>
       {/* <!-- contact-area-start --> */}
       <section className="pd-1 pd-2 bg-btm">
